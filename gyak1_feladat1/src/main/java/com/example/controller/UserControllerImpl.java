@@ -27,7 +27,7 @@ public class UserControllerImpl implements UserController {
             userService.save(user);
         }
         else {
-            throw new IllegalArgumentException();
+            System.out.println("invalid");
         }
     }
 
