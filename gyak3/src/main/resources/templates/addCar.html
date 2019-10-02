@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+    <style>
+        .fieldError {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="/car/add" method="post" th:object="${car}">
+        <ul>
+            <li th:each="err: ${#fields.errors('id')}" th:text="${err}"></li>
+        </ul><br/>
+        Id:
+        <input
+                th:field="*{id}"
+                th:class="${#fields.hasErrors('id')}? fieldError" />
+        <br/>
+
+        <ul>
+            <li th:each="err: ${#fields.errors('licensePlateNumber')}" th:text="${err}"></li>
+        </ul><br/>
+        License plate number:
+        <input
+                th:field="*{licensePlateNumber}"
+                th:class="${#fields.hasErrors('licensePlateNumber')}? fieldError" />
+        <br/>
+
+        <input type="submit" />
+
+
+    </form>
+</body>
+</html>
