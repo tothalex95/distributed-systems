@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Car List</title>
+</head>
+<body>
+
+<h1>Hello from <span th:text="${appName}"></span></h1>
+
+<table>
+    <tr th:each="car: ${carList}">
+        <td th:text="${car.id}"></td>
+        <td th:text="${car.licensePlateNumber}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
