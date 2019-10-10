@@ -1,4 +1,4 @@
-package com.example.gyak3.car;
+package com.example.autonyilvantartologic.car;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
