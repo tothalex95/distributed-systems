@@ -1,5 +1,6 @@
 package com.example.autonyilvantartologic;
 
+import com.example.autonyilvantartologic.exceptions.CarIdMustBeUniqueException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void add(Car car) {
+        if (carList.stream().anyMatch(c -> c.getId() == car.getId())) {
+            throw new CarIdMustBeUniqueException("Car ID must be unique!");
+        }
         carList.add(car);
     }
 
