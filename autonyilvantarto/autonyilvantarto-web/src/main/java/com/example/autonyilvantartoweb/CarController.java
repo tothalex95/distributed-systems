@@ -33,7 +33,7 @@ public class CarController {
         modelAndView.setViewName("carList");
         modelAndView.addObject("carList", carService.getCarList());
         modelAndView.addObject("appName", appName);
-        return  modelAndView;
+        return modelAndView;
     }
 
     @GetMapping("id-order")
@@ -79,8 +79,7 @@ public class CarController {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("car", car);
             modelAndView.setViewName("addCar");
-        }
-        else {
+        } else {
             carService.add(car);
             modelAndView.setViewName("redirect:/car");
         }

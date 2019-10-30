@@ -27,11 +27,9 @@ public class ListCarStrategy implements CarStrategy {
                 }
                 if (params[1].equalsIgnoreCase("ID")) {
                     list(carService.getCarListOrderById());
-                }
-                else if (params[1].equalsIgnoreCase("LICENSE")) {
+                } else if (params[1].equalsIgnoreCase("LICENSE")) {
                     list(carService.getCarListOrderByLicensePlateNumber());
-                }
-                else {
+                } else {
                     log.error("LIST ORDERBY unknown parameter: {}", params[1]);
                 }
                 break;

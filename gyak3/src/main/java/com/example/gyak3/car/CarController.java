@@ -49,8 +49,7 @@ public class CarController {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("car", car);
             modelAndView.setViewName("addCar");
-        }
-        else {
+        } else {
             carService.add(car);
             modelAndView.setViewName("redirect:/car");
         }

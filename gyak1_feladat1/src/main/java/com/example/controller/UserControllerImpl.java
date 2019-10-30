@@ -25,8 +25,7 @@ public class UserControllerImpl implements UserController {
     public void save(User user) {
         if (isValid(user)) {
             userService.save(user);
-        }
-        else {
+        } else {
             System.out.println("invalid");
         }
     }
