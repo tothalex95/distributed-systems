@@ -26,6 +26,9 @@ class FacebookBotServiceTest {
         event.setMessage(new Message().setText("mizu?"));
         assertEquals("nemtom mi bajod", facebookBotService.getResponse(event).getMessage().getText());
 
+        event.setMessage(new Message().setText(null));
+        assertEquals("nemtom mi bajod", facebookBotService.getResponse(event).getMessage().getText());
+
         event.setMessage(null);
         assertEquals("nemtom mi bajod", facebookBotService.getResponse(event).getMessage().getText());
     }

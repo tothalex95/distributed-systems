@@ -22,6 +22,9 @@ public class FacebookService {
     }
 
     public ResponseEntity<String> sendResponse(Event event) {
+        if (event == null) {
+            throw new IllegalArgumentException("event cannot be null");
+        }
         try {
             return restTemplate.postForEntity(facebookApiEndpoints.getFacebookSendUrl(), event, String.class);
         } catch (HttpClientErrorException e) {

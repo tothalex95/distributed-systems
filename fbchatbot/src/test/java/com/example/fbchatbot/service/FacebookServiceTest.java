@@ -35,6 +35,7 @@ class FacebookServiceTest {
         .thenReturn(ResponseEntity.ok("asd"));
 
         assertEquals(ResponseEntity.ok("asd"), facebookService.sendResponse(new Event()));
+        assertThrows(IllegalArgumentException.class, () -> facebookService.sendResponse(null));
 
         Mockito.reset(facebookApiEndpoints, restTemplate);
     }

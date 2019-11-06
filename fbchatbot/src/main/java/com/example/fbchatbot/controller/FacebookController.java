@@ -42,8 +42,11 @@ public class FacebookController {
 
     @PostMapping(value = "webhook", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity setupWebhookEndpoint(@RequestBody Callback callback) {
-        if (!callback.getObject().equals("page")) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (callback == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        if (!"page".equals(callback.getObject())) {
+            return ResponseEntity.notFound().build();
         }
         for (Entry entry : callback.getEntry()) {
             for (Event event : entry.getMessaging()) {
