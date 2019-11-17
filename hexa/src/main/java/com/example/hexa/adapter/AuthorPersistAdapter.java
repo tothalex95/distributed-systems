@@ -18,7 +18,7 @@ public class AuthorPersistAdapter implements PersistAuthorPort {
     @Override
     public void saveAuthor(Author author) {
         AuthorEntity authorEntity = authorRepository.save(new AuthorEntity(null, author.getName()));
-        log.debug("entity saved {}", authorEntity);
+        log.debug("authorEntity saved {}", authorEntity);
     }
 
 }

@@ -16,7 +16,7 @@ public class RegisterAuthorService implements RegisterAuthorUseCase {
 
     @Override
     public void registerAuthor(RegisterAuthorCommand command) {
-        log.debug("incoming registerAuthor {}", command);
+        log.debug("incoming registerAuthorCommand {}", command);
         persistAuthorPort.saveAuthor(new Author(command.getName()));
     }
 
