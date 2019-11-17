@@ -1,4 +1,4 @@
-package com.example.hexa.adapter.web;
+package com.example.hexa.adapter;
 
 import com.example.hexa.application.port.in.RegisterAuthorUseCase;
 import lombok.Data;

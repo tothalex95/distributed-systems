@@ -1,5 +1,6 @@
 package com.example.hexa.adapter.web;
 
+import com.example.hexa.adapter.RegisterAuthorResource;
 import com.example.hexa.application.port.in.RegisterAuthorUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
