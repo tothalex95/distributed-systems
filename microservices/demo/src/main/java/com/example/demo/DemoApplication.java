@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -24,13 +24,13 @@ public class DemoApplication {
 
     @LoadBalanced
     @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+    public WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
     }
 
     @Bean
-    public MainController mainController(RestTemplate restTemplate) {
-        return new MainController(restTemplate, accountServiceUrl);
+    public MainController mainController() {
+        return new MainController(webClientBuilder().baseUrl(accountServiceUrl).build());
     }
 
 }
