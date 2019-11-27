@@ -1,0 +1,35 @@
+version: '3'
+services:
+  eureka:
+    container_name: eureka
+    build:
+      context: ../basic
+      dockerfile: Dockerfile.eureka
+    image: eureka:latest
+    environment:
+      SPRING_APPLICATION_JSON: '{"eureka": {"client":{"serviceUrl":{"defaultZone":"http://host.docker.internal:8888/eureka/"}}}}'
+    expose:
+      - 8888
+    ports:
+      - 8888:8888
+    networks:
+      - spring-cloud-network
+  account-micro-service:
+    container_name: account-micro-service
+    build:
+      context: ../basic
+      dockerfile: Dockerfile.accMiSer
+    image: account-micro-service:latest
+    environment:
+      SPRING_APPLICATION_JSON: '{"spring":{"cloud":{"config":{"uri":"http://host.docker.internal:8888/eureka/"}}}}'
+    expose:
+      - 8889
+    ports:
+      - 8889:8889
+    networks:
+      - spring-cloud-network
+    depends_on:
+      - eureka
+networks:
+  spring-cloud-network:
+    driver: bridge
